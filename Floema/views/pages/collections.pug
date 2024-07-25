@@ -1,0 +1,40 @@
+extends ../base.pug
+
+block variables     
+    - var template = "collections"
+
+block content 
+    .collections(data-background="#b48c81" data-color="#F9F1E7") 
+        .collections_wrapper 
+            .collections_titles
+                each collection, index in collections
+                    .collections_titles_label!=`${home.data.collection}<br>${Numbers(index)}`
+                    .collections_titles_title=collection.data.title
+
+                each collection, index in collections
+                    .collections_titles_label!=`${home.data.collection}<br>${Numbers(index)}`
+                    .collections_titles_title=collection.data.title
+                
+                each collection, index in collections
+                    .collections_titles_label!=`${home.data.collection}<br>${Numbers(index)}`
+                    .collections_titles_title=collection.data.title
+                    
+            .collections_gallery 
+                .collections_gallery_wrapper
+                    each collection, index in collections
+                        each product in collection.data.products
+                            a.collections_gallery_link(href=Link(product.products_product))
+                                figure.collections_gallery_media(data-index=index)
+                                    img.collections_gallery_media_image(data-src=product.products_product.data.image.url alt=product.products_product.data.image.alt)
+
+            .collections_content 
+                each collection, index in collections 
+                    article.collections_article(class=`${index === 0 ? "collections_article--active" : ""}`)
+                        h2.collections_article_title=`${collection.data.title} ${home.data.collection}` 
+                        p.collections_article_description=collection.data.description
+
+            .collections_mobile
+                each collection, index in collections
+                    .collections_mobile_item
+                        .collections_mobile_item_label!=`${home.data.collection}<br>${Numbers(index)}`
+                        .collections_mobile_item_title=collection.data.title
