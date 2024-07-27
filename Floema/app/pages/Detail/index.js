@@ -6,7 +6,6 @@ export default class Detail extends Page {
     constructor () {
         super({
             id: "detail",
-
             element: ".detail",
             elements: {
                 button: ".detail_button"
@@ -14,10 +13,18 @@ export default class Detail extends Page {
         })
 
     }
+    
+    create() { 
+        super.create()
+
+        this.link = new Button({
+            element: this.elements.button
+        })
+    }
 
     show() {
         const timeline = GSAP.timeline({
-            delay: 2
+            delay: 1
         }) 
 
         timeline.fromTo(this.element, {
@@ -29,17 +36,11 @@ export default class Detail extends Page {
         super.show(timeline)
     }
 
-    create() { 
-        super.create()
-
-        this.link = new Button({
-            element: this.elements.button
-        })
-    }
-
     destroy() {
         super.destroy()
 
         this.link.removeEventListeners()
     }
 }
+
+// COMPLETE

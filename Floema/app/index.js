@@ -1,4 +1,5 @@
 import NormalizeWheel from "normalize-wheel"
+
 import each from "lodash/each"
 
 import Canvas from "components/Canvas"
@@ -8,14 +9,14 @@ import Preloader from "components/Preloader"
 
 import About from "pages/About"
 import Collections from "pages/Collections"
-import Detail from "pages/Detail"
 import Home from "pages/Home"
+import Detail from "pages/Detail"
 
 class App {
     constructor() {
         this.createContent()
-        this.createCanvas()
 
+        this.createCanvas()
         this.createPreloader()
         this.createNavigation()
         this.createPages()
@@ -57,8 +58,8 @@ class App {
         this.pages = {
             about: new About(),
             collections: new Collections(),
-            detail: new Detail(),
-            home: new Home()
+            home: new Home(),
+            detail: new Detail()
         }
 
         this.page = this.pages[this.template]
@@ -78,7 +79,7 @@ class App {
     onPopState() {
         this.onChange({
             url: window.location.pathname,
-            push: false,
+            push: true, // false
         })
     }
 
@@ -117,22 +118,21 @@ class App {
 
             this.page.show()
 
-
             this.addLinkListeners()
         }
         else {
-            console.log("Error")
+            console.error(`response status: ${request.status}`)
         }
     }
 
     onResize() {
-        if (this.canvas && this.canvas.onResize) {
-            this.canvas.onResize()
-        }
-
         if (this.page && this.page.onResize) {
             this.page.onResize()
         }
+
+        // if (this.canvas && this.canvas.onResize) {
+        //     this.canvas.onResize()
+        // }
 
         window.requestAnimationFrame(_ => {
             if (this.canvas && this.canvas.onResize) {
@@ -140,7 +140,6 @@ class App {
             }
         })
     }
-
 
     onTouchDown(event) {
         if (this.canvas && this.canvas.onTouchDown) {
@@ -167,12 +166,10 @@ class App {
             this.canvas.onWheel(normalizedWheel)
         }
 
-
         if (this.page && this.page.onWheel) {
             this.page.onWheel(normalizedWheel)
         }
     }
-
 
     /**
      * Loop ------------------------------------------------------------------
@@ -224,3 +221,5 @@ class App {
 }
 
 new App()
+
+// COMPLETE

@@ -28,3 +28,5 @@ export default class Home extends Page {
         this.link.removeEventListeners()
     }
 }
+
+// COMPLETE 

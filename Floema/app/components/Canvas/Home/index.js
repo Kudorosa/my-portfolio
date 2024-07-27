@@ -1,7 +1,10 @@
 import { Plane, Transform } from "ogl"
-import Media from "./Media"
+
 import GSAP from "gsap"
+
 import map from "lodash/map"
+
+import Media from "./Media"
 
 export default class {
     constructor({ gl, scene, sizes }) {
@@ -98,8 +101,8 @@ export default class {
         this.sizes = event.sizes
 
         this.gallerySizes = {
-            height: this.galleryBounds.height / window.innerHeight * this.sizes.height,
-            width: this.galleryBounds.width / window.innerWidth * this.sizes.width,
+            width: (this.galleryBounds.width / window.innerWidth) * this.sizes.width,
+            height: (this.galleryBounds.height / window.innerHeight) * this.sizes.height,
         }
 
         this.scroll.x = this.x.target = 0
@@ -110,6 +113,7 @@ export default class {
 
     onTouchDown({ x, y }) {
         this.speed.target = 1
+
         this.scrollCurrent.x = this.scroll.x
         this.scrollCurrent.y = this.scroll.y
     }
@@ -158,8 +162,8 @@ export default class {
         this.scroll.x = this.x.current
         this.scroll.y = this.y.current
 
-        map(this.medias, (media, index) => {
-            const offsetX = this.sizes.width * 0.75
+        map(this.medias, (media, index) => { // Home page images
+            const offsetX = this.sizes.width * 0.6
             const scaleX = media.mesh.scale.x / 2
 
             if (this.x.direction === "left") {
@@ -180,7 +184,7 @@ export default class {
                 }
             }
 
-            const offsetY = this.sizes.height * 0.75
+            const offsetY = this.sizes.height * 0.6
             const scaleY = media.mesh.scale.y / 2
 
             if (this.y.direction === "top") {
@@ -204,7 +208,6 @@ export default class {
         })
     }
 
-
     /**
      * Destroy 
      */
@@ -213,3 +216,5 @@ export default class {
         this.scene.removeChild(this.group)
     }
 }
+
+// COMPLETE -- TO FIX CASCADE RESIZE WINDOW

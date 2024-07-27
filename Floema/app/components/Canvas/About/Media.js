@@ -1,18 +1,18 @@
-import GSAP from "gsap"
 import { Mesh, Program } from "ogl"
+import GSAP from "gsap"
 
 import Detection from "classes/Detection"
 
-import fragment from "shaders/plane-fragment.glsl"
 import vertex from "shaders/plane-vertex.glsl"
+import fragment from "shaders/plane-fragment.glsl"
 
-export default class {
+export default class Media {
     constructor({ element, geometry, gl, index, scene, sizes }) {
         this.element = element
-        this.geometry = geometry
         this.gl = gl
-        this.index = index
+        this.geometry = geometry
         this.scene = scene
+        this.index = index
         this.sizes = sizes
 
         this.extra = {
@@ -40,11 +40,10 @@ export default class {
             fragment,
             vertex,
             uniforms: {
-                uAlpha: { value: 1 },
+                uAlpha: { value: 0 },
                 tMap: { value: this.texture },
             },
         })
-
     }
 
     createMesh() {
@@ -82,6 +81,7 @@ export default class {
         GSAP.to(this.program.uniforms.uAlpha, {
             value: 0
         })
+
     }
 
     /**
@@ -115,12 +115,6 @@ export default class {
 
         this.mesh.scale.x = this.sizes.width * this.width
         this.mesh.scale.y = this.sizes.height * this.height
-
-        // Scale Effect
-        const scale = GSAP.utils.mapRange(0, this.sizes.width / 2, 0.1, 0, Math.abs(this.mesh.position.x)) // Scale Adjuster (0.5)
-
-        this.mesh.scale.x += scale
-        this.mesh.scale.y += scale
     }
 
     updateX(x = 0) { // Based on User Drag. 
@@ -145,3 +139,5 @@ export default class {
         this.updateY(0)
     }
 }
+
+// COMPLETE

@@ -4,6 +4,7 @@
 
     // background: $color-contessa;
     // color: $color-quarter-spanish-white;
+
     text-align: center;
     overflow: hidden;
 
@@ -11,10 +12,10 @@
     &:after {
         content: "";
         height: 24rem;
-        left: 0;
-        position: absolute;
         width: 100%;
         z-index: 1;
+        position: absolute;
+        left: 0;
     }
 
     &:before {
@@ -28,7 +29,7 @@
     }
 }
 
-.home_wrapper {}
+// .home_wrapper {}
 
 .home_titles {
     @extend %vertical-titles;
@@ -45,10 +46,9 @@
 
 .home_gallery {
     @extend %cover;
-
-    height: 172.5rem;
-    width: 241.8rem + 9rem;
     visibility: hidden;
+    width: 241.8rem + 9rem;
+    height: 172.5rem;
 }
 
 .home_gallery_media {
@@ -170,25 +170,27 @@
     @extend %description-14;
 
     letter-spacing: 0.05rem;
-    align-items: center;
-    bottom: 5rem;
-    display: flex;
+    width: 28.8rem;
     height: 6rem;
-    left: 50%;
+    align-items: center;
+    display: flex;
     justify-content: center;
     position: absolute;
     text-transform: uppercase;
+    bottom: 5rem;
+    left: 50%;
     transform: translateX(-50%);
-    width: 28.8rem;
     z-index: 2;
 
     @include media("<phone") {
         bottom: 7.5rem;
-        height: 13.7rem;
         width: 55rem;
+        height: 13.7rem;
     }
 }
 
 .home_link_icon {
     @extend %cover;
 }
+
+// COMPLETE

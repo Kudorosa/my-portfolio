@@ -2,13 +2,13 @@
     @extend %page;
 
     z-index: 0;
+
     // background: $color-quicksand;
     // color: $color-quarter-spanish-white;
 }
 
 .collections_wrapper {
     @extend %cover;
-
     overflow: hidden;
 }
 
@@ -32,7 +32,6 @@
 
 .collections_gallery {
     @extend %cover;
-
     z-index: 1;
 }
 
@@ -80,10 +79,10 @@
 }
 
 .collections_article {
-    bottom: 8rem;
-    left: 8rem;
-    opacity: 0;
     position: absolute;
+    left: 8rem;
+    bottom: 8rem;
+    opacity: 0;
     transition: opacity 0.4s ease;
 
     &--active {
@@ -103,9 +102,9 @@
 }
 
 .collections_mobile {
-    bottom: 5rem;
     display: none;
     position: absolute;
+    bottom: 5rem;
 
     @include media("<phone") {
         display: flex;
@@ -137,3 +136,5 @@
     position: absolute;
     width: 44.7rem;
 }
+
+// COMPLETE

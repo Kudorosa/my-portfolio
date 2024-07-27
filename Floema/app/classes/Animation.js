@@ -2,10 +2,7 @@ import Component from "classes/Component"
 
 export default class Animation extends Component {
     constructor({ element, elements }) {
-        super({
-            element,
-            elements,
-        })
+        super({ element, elements })
 
         this.createObserver()
         this.animateOut()
@@ -19,7 +16,6 @@ export default class Animation extends Component {
                 }
                 else {
                     this.animateOut()
-
                 }
             })
         })
@@ -27,15 +23,11 @@ export default class Animation extends Component {
         this.observer.observe(this.element)
     }
 
-    animateIn() {
+    animateIn() {}
 
-    }
+    animateOut() {}
 
-    animateOut() {
-
-    }
-
-    onResize() {
-        
-    }
+    onResize() {}
 }
+
+// COMPLETE

@@ -1,8 +1,10 @@
 import { Plane, Transform } from "ogl"
-import Media from "./Media"
-import Prefix from "prefix"
 import GSAP from "gsap"
+import Prefix from "prefix"
+
 import map from "lodash/map"
+
+import Media from "./Media"
 
 export default class {
     constructor({ gl, scene, sizes, transition }) {
@@ -19,6 +21,7 @@ export default class {
 
         this.galleryElement = document.querySelector(".collections_gallery")
         this.galleryElementWrapper = document.querySelector(".collections_gallery_wrapper")
+
         this.titlesElement = document.querySelector(".collections_titles")
 
         this.collectionsElements = document.querySelectorAll(".collections_article")
@@ -27,8 +30,8 @@ export default class {
         this.mediasElements = document.querySelectorAll(".collections_gallery_media")
 
         this.scroll = {
-            start: 0,
             current: 0,
+            start: 0,
             target: 0,
             lerp: 0.1,
             veloctiy: 1
@@ -112,6 +115,7 @@ export default class {
         this.bounds = this.galleryElementWrapper.getBoundingClientRect()
 
         this.scroll.last = this.scroll.target = 0
+
         map(this.medias, media => media.onResize(event, this.scroll))
 
         this.scroll.limit = this.bounds.width - this.medias[0].element.clientWidth
@@ -127,9 +131,7 @@ export default class {
         this.scroll.target = this.scroll.last - distance
     }
 
-    onTouchUp({ x, y }) {
-
-    }
+    onTouchUp({ x, y }) {}
 
     onWheel({ pixelY }) {
         this.scroll.target += pixelY
@@ -178,7 +180,7 @@ export default class {
 
         this.scroll.last = this.scroll.current
 
-        const index = Math.floor(Math.abs((this.scroll.current - (this.medias[0].bounds.width / 2)) / this.scroll.limit) * (this.medias.length - 1))
+        const index = Math.floor(Math.abs( (this.scroll.current - this.medias[0].bounds.width / 2) / this.scroll.limit ) * (this.medias.length - 1))
 
         if (this.index !== index) {
             this.onChange(index)
@@ -186,6 +188,8 @@ export default class {
 
         map(this.medias, (media, index) => {
             media.update(this.scroll.current, this.index)
+
+            media.mesh.rotation.z = Math.abs( GSAP.utils.mapRange(0, 1, -0.2, 0.2, index / (this.medias.length - 1)) ) - 0.1
 
             // media.mesh.position.y += Math.cos((media.mesh.position.x / this.sizes.width) * Math.PI * 0.1) * 40 - 40
         })
@@ -200,3 +204,5 @@ export default class {
         this.scene.removeChild(this.group)
     }
 }
+
+// COMPLETE

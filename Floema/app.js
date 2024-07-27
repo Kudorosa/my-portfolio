@@ -6,6 +6,7 @@ const express = require("express")
 const errorHandler = require("errorhandler")
 const methodOverride = require("method-override")
 const bodyParser = require("body-parser")
+const cors = require("cors")
 
 const app = express()
 const port = 3000
@@ -98,6 +99,7 @@ const handleRequest = async api => {
     collections.forEach(collection => {
         collection.data.products.forEach(item => {
             assets.push(item.products_product.data.image.url)
+            
         })
     })
 

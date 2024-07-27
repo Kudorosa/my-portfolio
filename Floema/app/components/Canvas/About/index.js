@@ -1,6 +1,7 @@
 import { Plane, Transform } from "ogl"
-import Media from "./Media"
+
 import GSAP from "gsap"
+
 import map from "lodash/map"
 // About will be Wrapper for all Galleries 
 import Gallery from "./Gallery"
@@ -55,7 +56,6 @@ export default class {
         map(this.galleries, gallery => gallery.hide())
     }
 
-
     /**
      * Events
      */
@@ -76,9 +76,7 @@ export default class {
         map(this.galleries, gallery => gallery.onTouchUp(event))
     }
 
-    onWheel({ pixelX, pixelY }) {
-        
-    }
+    onWheel({ pixelX, pixelY }) {}
 
     /**
      * Loop
@@ -95,3 +93,5 @@ export default class {
         map(this.galleries, gallery => gallery.destroy())
     }
 }
+
+// COMPLETE

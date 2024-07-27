@@ -22,7 +22,7 @@ export default class {
             current: 0,
             target: 0,
             lerp: 0.1,
-            multiplier: 0.1,
+            multiplier: 0,
         }
         
         this.createTexture()
@@ -31,7 +31,6 @@ export default class {
         this.createBounds({
             sizes: this.sizes
         })
-
     }
 
     createTexture() {
@@ -116,7 +115,7 @@ export default class {
     updateX(x = 0) { 
         this.x = (this.bounds.left + x) / window.innerWidth
 
-        this.mesh.position.x = (-this.sizes.width / 2) + (this.mesh.scale.x / 2) + (this.x * this.sizes.width) + this.extra.x
+        this.mesh.position.x = -this.sizes.width / 2 + this.mesh.scale.x / 2 + this.x * this.sizes.width + this.extra.x
     }
 
     update(scroll, index) {
@@ -131,6 +130,9 @@ export default class {
         this.opacity.target = index === this.index ? 1 : 0.4
         this.opacity.current = GSAP.utils.interpolate(this.opacity.current, this.opacity.target, this.opacity.lerp)
 
+        this.program.uniforms.uAlpha.value = this.opacity.multiplier
         this.program.uniforms.uAlpha.value = this.opacity.multiplier * this.opacity.current
     }
 }
+
+// COMPLETE

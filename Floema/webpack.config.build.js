@@ -11,3 +11,5 @@ module.exports = merge(config, {
         path: path.join(__dirname, "public")
     },
 }) 
+
+// COMPLETE

@@ -12,11 +12,13 @@
 .about_title {
     @extend %title-100;
 
-    margin: auto;
     max-width: 124rem;
+    margin: 0 auto;
     text-align: center;
 
     @include media("<phone") {
         max-width: 67.7rem;
     }
 }
+
+// COMPLETE

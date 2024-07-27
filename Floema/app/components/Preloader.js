@@ -1,6 +1,9 @@
 import { Texture } from "ogl"
-import Component from "classes/Component";
+
 import GSAP from "gsap";
+
+import Component from "classes/Component";
+
 import { split } from "utils/text"
 
 export default class Preloader extends Component {
@@ -45,6 +48,7 @@ export default class Preloader extends Component {
 
             media.crossOrigin = "anonymous"
             media.src = image
+
             media.onload = _ => {
                 texture.image = media
 
@@ -52,7 +56,6 @@ export default class Preloader extends Component {
             }
             
             window.TEXTURES[image] = texture
-
         })
     }
 
@@ -60,6 +63,7 @@ export default class Preloader extends Component {
         this.length += 1
 
         const percent = this.length / window.ASSETS.length
+
         this.elements.numberText.innerHTML = `${Math.round(percent * 100)}%`
 
         if (percent === 1) {
@@ -79,7 +83,7 @@ export default class Preloader extends Component {
                 duration: 1.5,
                 ease: "expo.out",
                 stagger: 0.1,
-                y: "100%",
+                y: "150%",
             })
 
             this.animateOut.to(this.elements.numberText, {
@@ -104,3 +108,5 @@ export default class Preloader extends Component {
         this.element.parentNode.removeChild(this.element)
     }
 }
+
+// COMPLETE

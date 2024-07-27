@@ -1,6 +1,7 @@
+import GSAP from "gsap"
+
 import { Transform } from "ogl"
 import map from "lodash/map"
-import GSAP from "gsap"
 
 import Media from "./Media"
 
@@ -22,7 +23,7 @@ export default class Gallery {
             current: 0,
             target: 0,
             lerp: 0.1,
-            veloctiy: 0.5 // 1
+            veloctiy: 1
         }
 
         this.createMedias()
@@ -71,7 +72,7 @@ export default class Gallery {
 
         this.sizes = event.sizes
 
-        this.width = this.bounds.width / window.innerWidth * this.sizes.width
+        this.width = (this.bounds.width / window.innerWidth) * this.sizes.width
 
         this.scroll.current = this.scroll.target = 0
 
@@ -88,9 +89,7 @@ export default class Gallery {
         this.scroll.target = this.scroll.start - distance
     }
 
-    onTouchUp({ x, y }) {
-
-    }
+    onTouchUp({ x, y }) {}
 
     /**
      * Loop
@@ -98,17 +97,14 @@ export default class Gallery {
 
     update(scroll) {
         const distance = (scroll.current - scroll.target) * 0.1
-
         const y = scroll.current / window.innerHeight
 
         if (this.scroll.current < this.scroll.target) {
             this.direction = "right"
-
             this.scroll.veloctiy = -1
         }
         else if (this.scroll.current > this.scroll.target) {
             this.direction = "left"
-
             this.scroll.veloctiy = 1
         }
 
@@ -149,3 +145,5 @@ export default class Gallery {
         this.scene.removeChild(this.group)
     }
 }
+
+// COMPLETE

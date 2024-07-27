@@ -4,7 +4,6 @@ export default class About extends Page {
     constructor () {
         super({
             id: "about",
-
             element: ".about",
             elements: { 
                 wrapper: ".about_wrapper",
@@ -15,3 +14,5 @@ export default class About extends Page {
 
     }
 }
+
+// COMPLETE 

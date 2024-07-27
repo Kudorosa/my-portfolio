@@ -1,4 +1,5 @@
 import GSAP from "gsap"
+
 import Component from "classes/Component"
 
 export default class Button extends Component {
@@ -41,3 +42,5 @@ export default class Button extends Component {
         this.element.removeEventListener("mouseleave", this.onMouseLeaveEvent)
     }
 }
+
+// COMPLETE

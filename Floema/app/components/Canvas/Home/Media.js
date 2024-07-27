@@ -21,6 +21,7 @@ export default class {
         this.createTexture()
         this.createProgram()
         this.createMesh()
+        
         this.createBounds({
             sizes: this.sizes
         })
@@ -53,12 +54,12 @@ export default class {
         })
 
         this.mesh.setParent(this.scene)
+
         this.mesh.rotation.z = GSAP.utils.random(-Math.PI * 0.03, Math.PI * 0.03)
     }
 
     createBounds({ sizes }) {
         this.sizes = sizes 
-
         this.bounds = this.element.getBoundingClientRect()
 
         this.updateScale()
@@ -132,3 +133,5 @@ export default class {
         this.program.uniforms.uSpeed.value = speed
     }
 }
+
+// COMPLETE

@@ -1,26 +1,25 @@
 import GSAP from "gsap"
+
 import Prefix from "prefix"
 
 import each from "lodash/each"
 import map from "lodash/map"
 
 import Title from "animations/Title"
-import Highlight from "animations/Highlight"
 import Paragraph from "animations/Paragraph"
 import Label from "animations/Label"
+import Highlight from "animations/Highlight"
 
 import AsyncLoad from "classes/AsyncLoad"
+
 import { ColorsManager } from "classes/Colors"
 
 export default class Page {
-    constructor({
-        element,
-        elements,
-        id
-    }) {
+    constructor({ element, elements, id }) {
         this.selector = element
         this.selectorChildren = {
             ...elements,
+
             animationsHighlights: `[data-animation="highlight"]`,
             animationsTitles: `[data-animation="title"]`,
             animationsLabels: `[data-animation="label"]`,
@@ -64,17 +63,16 @@ export default class Page {
         this.createPreloader()
     }
 
+    createPreloader() {
+        this.preloaders = map(this.elements.preloaders, element => {
+            return new AsyncLoad({ element })
+        })
+    }
+
+    // Animations 
+
     createAnimations() {
         this.animations = []
-
-        // Highlights
-        this.animationsHighlights = map(this.elements.animationsHighlights, element => {
-            return new Highlight({
-                element
-            })
-        })
-
-        this.animations.push(...this.animationsHighlights)
 
          // Titles 
          this.animationsTitles = map(this.elements.animationsTitles, element => {
@@ -102,13 +100,17 @@ export default class Page {
         })
 
         this.animations.push(...this.animationsLabels)
+
+         // Highlights
+         this.animationsHighlights = map(this.elements.animationsHighlights, element => {
+            return new Highlight({
+                element
+            })
+        })
+
+        this.animations.push(...this.animationsHighlights)
     }
 
-    createPreloader() {
-        this.preloaders = map(this.elements.preloaders, element => {
-            return new AsyncLoad({ element })
-        })
-    }
 
     /**
      * Animations
@@ -132,7 +134,6 @@ export default class Page {
                     autoAlpha: 1,
                 })
             }
-
             
             this.animationIn.call(_ => {
                 this.addEventListeners()
@@ -191,13 +192,9 @@ export default class Page {
     /**
      * Listeners
      */
-    addEventListeners() {
-
-    }
+    addEventListeners() {}
     
-    removeEventListeners() {
-        
-    }
+    removeEventListeners() {}
 
     /**
      * Destroy
@@ -206,3 +203,5 @@ export default class Page {
         this.removeEventListeners()
     }
 }
+
+// COMPLETE

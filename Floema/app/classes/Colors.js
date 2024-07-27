@@ -1,10 +1,7 @@
 import GSAP from "gsap"
 
 class Colors {
-    change({
-        backgroundColor,
-        color
-    }) {
+    change({ backgroundColor, color }) {
         GSAP.to(document.documentElement, {
             background: backgroundColor,
             color,
@@ -14,3 +11,5 @@ class Colors {
 }
 
 export const ColorsManager = new Colors() 
+
+// COMPLETE

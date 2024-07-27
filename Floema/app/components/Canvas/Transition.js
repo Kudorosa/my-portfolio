@@ -13,10 +13,6 @@ export default class {
         this.url = url
 
         this.geometry = new Plane(this.gl)
-
-    }
-
-    createTexture() {
     }
 
     createProgram(texture) {
@@ -71,7 +67,6 @@ export default class {
 
             this.transition = "collections"
         }
-
     }
 
     /**
@@ -111,11 +106,13 @@ export default class {
         }, 0)
 
         timeline.call(_ => {
+            this.scene.removeChild(this.mesh)
+        }, null, "+=.15")
+        
+        timeline.call(_ => {
             onComplete()
         })
-
-        timeline.call(_ => {
-            this.scene.removeChild(this.mesh)
-        }, null, "+=0.2")
     }
 }
+
+// COMPLETE

@@ -12,9 +12,9 @@
 
 .about_highlight_wrapper {
     height: 104rem;
+    width: 144rem;
     margin: auto;
     position: relative;
-    width: 144rem;
 
     .about_highlight:nth-child(4) & {
         width: 104rem;
@@ -34,29 +34,31 @@
 .about_highlight_label {
     @extend %description-12;
 
+    text-transform: uppercase;
     position: absolute;
     left: 50%;
+    // top: 9rem;
     transform: translateX(-50%);
     text-align: center;
     letter-spacing: 0.1rem;
-    text-transform: uppercase;
     width: 9.6rem;
 
     @include media("<=phone") {
         font-size: 2.4rem;
         margin-top: 6.5rem;
-        top: 90rem;
         width: 19rem;
+        top: 90rem;
     }
 }
 
 .about_highlight_title {
     @extend %title-200;
 
-    transform: translate(-50%, -50%) rotate(-90deg);
+    // padding-bottom: 2rem;
     position: absolute;
     top: 50%;
     left: 50%;
+    transform: translate(-50%, -50%) rotate(-90deg);
 
     @include media("<=phone") {
         font-size: 30rem;
@@ -65,18 +67,18 @@
 }
 
 .about_highlight_media {
-    height: 76rem;
     position: absolute;
+    height: 76rem;
     width: 54rem;
 
     .about_highlight:nth-child(4) & {
-        height: 52.8rem;
         width: 36rem;
+        height: 52.8rem;
     }
 
     &:first-child {
-        left: 0;
         top: 0;
+        left: 0;
     }
 
     &:last-child {
@@ -86,8 +88,8 @@
 
     @include media("<=phone") {
         .about_highlight:last-child & {
-            height: 76rem;
             width: 54rem;
+            height: 76rem;
 
             &:first-child {
                 left: 50%;
@@ -109,3 +111,5 @@
 
     object-fit: cover;
 }
+
+// COMPLETE

@@ -49,7 +49,9 @@ export default class {
             geometry: this.geometry,
             program: this.program,
         })
+
         this.mesh.rotation.z = Math.PI * 0.01
+
         this.mesh.setParent(this.scene)
     }
 
@@ -96,17 +98,11 @@ export default class {
         this.updateY()
     }
 
-    onTouchUp() {
+    onTouchUp() {}
 
-    }
+    onTouchMove() {}
 
-    onTouchMove() {
-
-    }
-
-    onTouchDown() {
-
-    }
+    onTouchDown() {}
 
     /**
      * Loop
@@ -121,20 +117,20 @@ export default class {
     }
 
     updateX() { // Based on User Drag. 
-        this.x = (this.bounds.left) / window.innerWidth
+        this.x = this.bounds.left / window.innerWidth
 
-        this.mesh.position.x = (-this.sizes.width / 2) + (this.mesh.scale.x / 2) + (this.x * this.sizes.width)
+        this.mesh.position.x = -this.sizes.width / 2 + this.mesh.scale.x / 2 + this.x * this.sizes.width
     }
 
     updateY() {
-        this.y = (this.bounds.top) / window.innerHeight
+        this.y = this.bounds.top / window.innerHeight
 
-        this.mesh.position.y = (this.sizes.height / 2) - (this.mesh.scale.y / 2) - (this.y * this.sizes.height)
+        this.mesh.position.y = this.sizes.height / 2 - this.mesh.scale.y / 2 - this.y * this.sizes.height
     }
 
     update() {
         this.updateX()
-        this.updateY()
+        // this.updateY()
     }
 
     /**
@@ -145,3 +141,5 @@ export default class {
         this.scene.removeChild(this.mesh)
     }
 }
+
+// COMPLETE 

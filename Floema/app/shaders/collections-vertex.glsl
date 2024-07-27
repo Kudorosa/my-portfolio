@@ -4,8 +4,8 @@ attribute vec2 uv;
 uniform mat4 modelViewMatrix;
 uniform mat4 projectionMatrix;
 
-varying vec2 vUv; 
 varying vec4 vPosition;
+varying vec2 vUv; 
 
 void main() {
     vUv = uv; 
@@ -16,3 +16,5 @@ void main() {
 
     gl_Position = projectionMatrix * newPosition;
 }
+
+// COMPLETE 

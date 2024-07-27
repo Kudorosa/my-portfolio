@@ -1,13 +1,12 @@
 import GSAP from "gsap"
 import { Camera, Renderer, Transform } from "ogl"
 
-import Home from "./Home"
+import About from "./About"
 import Collections from "./Collections"
 import Detail from "./Detail"
-import About from "./About"
+import Home from "./Home"
 
 import Transition from "./Transition"
-
 
 export default class Canvas {
     constructor({ template }) {
@@ -131,22 +130,25 @@ export default class Canvas {
     /**
      * Events
      */
-
+    onPreloaded() {
+        this.onChangeEnd(this.template)
+    }
+    
     onChangeStart(template, url) {
-        if (this.about) {
-            this.about.hide()
+        if (this.home) {
+            this.home.hide()
         }
 
         if (this.collections) {
             this.collections.hide()
         }
-
-        if (this.home) {
-            this.home.hide()
-        }
-
+        
         if (this.detail) {
             this.detail.hide()
+        }
+        
+        if (this.about) {
+            this.about.hide()
         }
 
         this.isFromCollectionsToDetail = this.template === "collections" && url.indexOf("detail") > -1
@@ -164,12 +166,16 @@ export default class Canvas {
         }
     }
 
-    onPreloaded() {
-        this.onChangeEnd(this.template)
-    }
 
     // Hard React Objective: Not able to implmenet the title from one specific component outside of it makes React bad
     onChangeEnd(template) {
+        if (template === "home") {
+            this.createHome()
+        }
+        else {
+            this.destroyHome()
+        }
+ 
         if (template === "about") {
             this.createAbout()
         }
@@ -177,13 +183,6 @@ export default class Canvas {
             this.destroyAbout()
         }
  
-        if (template === "collections") {
-            this.createCollections()
-        }
-        else if (this.collections) {
-            this.destroyCollections()
-        }
-
         if (template === "detail") {
             this.createDetail()
         }
@@ -191,11 +190,11 @@ export default class Canvas {
             this.destroyDetail()
         }
 
-        if (template === "home") {
-            this.createHome()
+        if (template === "collections") {
+            this.createCollections()
         }
-        else {
-            this.destroyHome()
+        else if (this.collections) {
+            this.destroyCollections()
         }
 
         this.template = template
@@ -329,13 +328,12 @@ export default class Canvas {
     }
 
     onWheel(event) {
+        if (this.home) {
+            this.home.onWheel(event)
+        }
 
         if (this.collections) {
             this.collections.onWheel(event)
-        }
-
-        if (this.home) {
-            this.home.onWheel(event)
         }
     }
     /**
@@ -365,3 +363,5 @@ export default class Canvas {
         })
     }
 }
+
+// COMPLETE

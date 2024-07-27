@@ -3,7 +3,6 @@ import Component from "classes/Component"
 export default class AsyncLoad extends Component {
     constructor({ element }) {
         super({ element })
-
         this.createObserver()
     }
 
@@ -24,3 +23,5 @@ export default class AsyncLoad extends Component {
         this.observer.observe(this.element)
     }
 }
+
+// COMPLETE

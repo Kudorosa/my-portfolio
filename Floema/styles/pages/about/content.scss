@@ -1,8 +1,8 @@
 .about_content {  
     display: flex;
     justify-content: center;   
-    margin: 20rem auto;
     position: relative;
+    margin: 20rem auto;
 
     &:first-child { 
         margin-top: 0;
@@ -111,9 +111,9 @@
     position: relative;
 
     .about_content:nth-child(3) & { 
-        height: 80.8rem;
-        margin-left: 18rem;
         width: 53.8rem;
+        margin-left: 18rem;
+        height: 80.8rem;
     }
 
     .about_content:nth-child(5) & { 
@@ -123,9 +123,9 @@
     }
     
     .about_content:nth-child(8) & { 
-        height: 52rem;
-        margin-right: 12rem;
         width: 84.2rem;
+        margin-right: 12rem;
+        height: 52rem;
     }
     
     .about_content:nth-child(9) & { 
@@ -136,9 +136,9 @@
 
     @include media("<=phone") { 
         .about_content:nth-child(3) & { 
-            height: 91.4rem;
             margin-left: 0;
             width: 60.9rem;
+            height: 91.4rem;
         }
 
         .about_content:nth-child(5) & { 
@@ -148,9 +148,9 @@
         }
 
         .about_content:nth-child(8) & { 
-            height: 52rem;
-            margin-right: 0;
             width: 100vw;
+            margin-right: 0;
+            height: 52rem;
         }
 
         .about_content:nth-child(9) & { 
@@ -166,3 +166,5 @@
 
     object-fit: cover;
 }
+
+// COMPLETE

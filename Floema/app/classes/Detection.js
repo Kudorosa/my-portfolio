@@ -9,6 +9,16 @@ class Detection {
         return this.PhoneCheck
     }
 
+    isDesktop() {
+        if (this.isDesktopChecked) {
+            this.isDesktopChecked = true
+
+            this.DesktopCheck = document.documentElement.classList.contains("desktop")
+        }
+
+        return this.DesktopCheck
+    }
+
     isTablet() {
         if (this.isTabletChecked) {
             this.isTabletChecked = true
@@ -19,17 +29,10 @@ class Detection {
         return this.TabletCheck
     }
 
-    isDesktop() {
-        if (this.isDesktopChecked) {
-            this.isDesktopChecked = true
-
-            this.DesktopCheck = document.documentElement.classList.contains("desktop")
-        }
-
-        return this.DesktopCheck
-    }
 }
 
 const DetectionManager = new Detection()
 
 export default DetectionManager
+
+// COMPLETE

@@ -10,6 +10,7 @@ void main() {
     vec4 texture = texture2D(tMap, vUv);
     
     gl_FragColor = texture;
-    gl_FragColor.a = uAlpha; //(1.0 - abs(vPosition.x * 0.5)) * uAlpha;
+    gl_FragColor.a = uAlpha;
 }
  
+// COMPLETE 
