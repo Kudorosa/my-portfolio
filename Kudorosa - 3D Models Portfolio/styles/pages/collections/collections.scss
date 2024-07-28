@@ -1,0 +1,140 @@
+.collections {
+    @extend %page;
+
+    z-index: 0;
+
+    // background: $color-quicksand;
+    // color: $color-quarter-spanish-white;
+}
+
+.collections_wrapper {
+    @extend %cover;
+    overflow: hidden;
+}
+
+.collections_titles {
+    @extend %vertical-titles;
+
+    transition: transform 1s ease;
+
+    @include media("<phone") {
+        display: none;
+    }
+}
+
+.collections_titles_label {
+    @extend %vertical-titles_label;
+}
+
+.collections_titles_title {
+    @extend %vertical-titles_title;
+}
+
+.collections_gallery {
+    @extend %cover;
+    z-index: 1;
+}
+
+.collections_gallery_wrapper {
+    align-items: center;
+    display: flex;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-44.7rem * 0.5, -50%);
+}
+
+.collections_gallery_link {
+    display: block;
+    margin: 0 5.3rem;
+
+    &:first-child {
+        margin-left: 0;
+    }
+
+    &:last-child {
+        margin-right: 0;
+    }
+}
+
+.collections_gallery_media {
+    height: 63.1rem;
+    position: relative;
+    width: 44.7rem;
+    visibility: hidden;
+}
+
+.collections_gallery_media_image {
+    @extend %cover;
+
+    object-fit: cover;
+}
+
+.collections_content {
+    @extend %cover;
+
+    @include media("<phone") {
+        display: none;
+    }
+}
+
+.collections_article {
+    position: absolute;
+    left: 8rem;
+    bottom: 8rem;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+
+    &--active {
+        opacity: 1;
+        transition-delay: 0.4s;
+    }
+}
+
+.collections_article_title {
+    @extend %title-60;
+}
+
+.collections_article_description {
+    @extend %description-16;
+
+    max-width: 44rem;
+}
+
+.collections_mobile {
+    display: none;
+    position: absolute;
+    bottom: 5rem;
+
+    @include media("<phone") {
+        display: flex;
+    }
+}
+
+.collections_mobile_item {
+    padding-left: 5rem;
+    width: 100vw;
+}
+
+.collections_mobile_item_label {
+    font-size: 2rem;
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+}
+
+.collections_mobile_item_title {
+    font-family: $font-george-x;
+    font-size: 12rem;
+}
+
+.collections_button {
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    height: 63.1rem;
+    position: absolute;
+    width: 44.7rem;
+}
+
+// COMPLETE
