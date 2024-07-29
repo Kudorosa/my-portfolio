@@ -170,6 +170,22 @@ export default class Page {
     onWheel( { pixelY }) {
         this.scroll.target += pixelY
     }
+
+    onTouchStart(event) {
+        this.scroll.startY = event.touches ? event.touches[0].clientY : event.clientY
+        this.scroll.touchDelta = 0
+    }
+
+    onTouchMove(event) {
+        const y = event.touches ? event.touches[0].clientY : event.clientY
+        this.scroll.touchDelta = this.scroll.startY - y
+        this.scroll.target += this.scroll.touchDelta
+        this.scroll.startY = y
+    }
+
+    onTouchEnd() {
+        this.scroll.touchDelta = 0
+    }
     
     /**
      * Loop
@@ -192,9 +208,17 @@ export default class Page {
     /**
      * Listeners
      */
-    addEventListeners() {}
+    addEventListeners() {
+        window.addEventListener('touchstart', this.onTouchStart.bind(this))
+        window.addEventListener('touchmove', this.onTouchMove.bind(this))
+        window.addEventListener('touchend', this.onTouchEnd.bind(this))
+    }
     
-    removeEventListeners() {}
+    removeEventListeners() {
+        window.removeEventListener('touchstart', this.onTouchStart.bind(this))
+        window.removeEventListener('touchmove', this.onTouchMove.bind(this))
+        window.removeEventListener('touchend', this.onTouchEnd.bind(this))
+    }
 
     /**
      * Destroy

@@ -126,10 +126,10 @@ export default class Media {
     updateY(y = 0) {
         this.y = (this.bounds.top + y) / window.innerHeight
 
-        const extra = Detection.isPhone() ? 20 : 40
+        const extra = Detection.isPhone() ? 10 : 40
 
         this.mesh.position.y = (this.sizes.height / 2) - (this.mesh.scale.y / 2) - (this.y * this.sizes.height)
-        this.mesh.position.y += Math.cos((this.mesh.position.x / this.sizes.width) * Math.PI * 0.1) * extra - extra // Tweak Values for more Natural Feel.
+        this.mesh.position.y += Math.cos((this.mesh.position.x / this.sizes.width) * Math.PI * 0.075) * extra - extra // Tweak Values for more Natural Feel.
     }
 
     update(scroll) {

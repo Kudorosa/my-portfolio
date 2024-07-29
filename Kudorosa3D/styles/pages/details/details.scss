@@ -2,9 +2,6 @@
     @extend %page; 
     @extend %center;
 
-    // background: $color-quicksand;
-    // color: $color-quarter-spanish-white;
-
     @include media("<phone") { 
         height: auto;
     }
@@ -29,8 +26,8 @@
 
     @include media("<phone") { 
         width: 100%; 
-        height: 93.4rem;
-        margin: 0 auto 7.8rem;
+        height: 72rem;
+        margin: 0 auto 3rem;
     }
 }
  
@@ -155,7 +152,9 @@
     @include media("<phone") { 
         width: 26.8rem;
         height: 13rem;
-        bottom: 12rem;
+        position: fixed;
+        bottom: 25%;
+        left: 75%;
     }
 }
 
